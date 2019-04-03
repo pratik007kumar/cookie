@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Test Cookie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="cookie.js"></script>
+</head>
+<body>
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Example Textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+       <button type="button" onclick="return store();" class="btn btn-success">Submit</button>
+     </div>
+   </form>
+ </div>
+</body>
+<script type="text/javascript">
+
+  function store() {
+    //     var exampleFormControlInput1 =$('#exampleFormControlSelect1').val();
+    //     setCookie("exampleFormControlSelect1select", exampleFormControlInput1, 30);
+    $("form").each(function(){
+      var input= $(this).find(':input');
+      input.each(function(){
+        var value=$(this).val(); 
+        var id=$(this).attr('id')
+        setCookie(id, value, 30);
+        // console.log($(this));
+        // console.log(id);
+        // console.log(value);
+        
+      });
+
+    });
+
+
+  }
+  function fetch() {
+    // var exampleFormControlInput1=getCookie("exampleFormControlSelect1select");
+    // console.log(exampleFormControlInput1);
+    
+
+    $("form").each(function(){
+      var input= $(this).find(':input');
+      input.each(function(){
+              // var value=
+              var id=$(this).attr('id')
+              var value =getCookie(id);
+              $(this).val(value); 
+              
+          // console.log($(this));
+          // console.log(id);
+          // console.log(value);
+          
+        });
+    });
+
+  }
+  function distroy() {
+   // var exampleFormControlInput1 =$('#exampleFormControlInput1').val();
+   //  setCookie("exampleFormControlInput1", exampleFormControlInput1, -1);
+   $("form").each(function(){
+    var input= $(this).find(':input');
+    input.each(function(){
+      var value=$(this).val(); 
+      var id=$(this).attr('id')
+      setCookie(id, value, -1);
+        // console.log($(this));
+        // console.log(id);
+        // console.log(value);
+        
+      });
+      });
+  }
+
+  $( document ).ready(function() {
+    console.log( "ready!" );
+    var val=getCookie("exampleFormControlInput1");
+    if (val != "") {
+      if (confirm('Do you want to Use Previous Value')) {
+        fetch();
+      }else{
+        distroy();
+      }
+
+    }
+  });
+</script>
+</html>
