@@ -1,7 +1,16 @@
 # cookie
-Cookie example Set and get Cookie
-## Link js file in your form file  and create copy following function
-## And fill the magic.
+  Set and get Cookie 
+
+# Example:
+ 
+ https://pratik007kumar.github.io/cookie/. 
+ 
+- step1: enter details 
+- step2: click on submit
+- step3: then reload the page 
+
+# How to use ?
+Link js file in your form file  and create copy following function And fill the magic.
 ```
   function store() {
     //     var exampleFormControlInput1 =$('#exampleFormControlSelect1').val();
